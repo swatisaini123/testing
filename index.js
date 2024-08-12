@@ -1,8 +1,12 @@
-var http = require('http');
+const http = require('http');
+const port = process.env.PORT || 3000;
 
-//create a server object:
-http.createServer(function (req, res) {
-  res.write('A Monk in Cloud'); //write a response to the client
-  res.end(); //end the response
-}).listen(400); //the server object listens on port 80
-console.log("Port: 83");
+const requestHandler = (request, response) => {
+  response.end('Hello, World!');
+};
+
+const server = http.createServer(requestHandler);
+
+server.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
+});
